@@ -8,9 +8,13 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.listen()
     conn, addr = s.accept()
     with conn:
-        print(f"Contestado desde {addr}")
+        print(f"Conectando desde {addr}")
         while True:
             data = conn.recv(1024)
-            if not data:
+            if data.decode('utf-8').startswith("/"):
+                print(f'Comando recibido!','Cliente dice:',data.decode('utf-8'))
+                resp = input('Servidor:')
+                conn.sendall(bytes(resp, encoding="ascii"))
+            if data.decode('utf-8') == 'exit':
+                conn.sendall(b'Conexion finalizada')
                 break
-            conn.sendall(data)

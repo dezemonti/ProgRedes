@@ -5,7 +5,15 @@ PORT = 54321  # el puerto del servidor
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
-    s.sendall(b"Hola soy el cliente")
-    data = s.recv(1024)
-
-print(f"Received {data!r}")
+    msg = input("Cliente:")
+    if msg.startswith("/"):
+        s.sendall(bytes(msg, encoding="ascii"))
+        data = s.recv(1024)
+        while data:
+            if data.decode('utf-8').startswith("/"):
+                print(f'Comando recibido!','Servidor dice:',data.decode('utf-8'))
+                msg = input("Cliente:")
+                s.sendall(bytes(msg, encoding="ascii"))
+                data = s.recv(1024)
+                if msg == "exit":
+                    break
