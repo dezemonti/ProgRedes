@@ -1,6 +1,6 @@
 import socket
 
-HOST = "127.0.0.1"  # dominio  o IP del servidor
+HOST = "127.0.0.1"  # dominio o IP del servidor
 PORT = 54321  # el puerto del servidor
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -17,5 +17,5 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 print(f'Esperando mensaje del Servidor...')
                 s.sendall(bytes(msg, encoding="ascii"))
                 data = s.recv(1024)
-                if msg == "exit":
+                if msg == "/chau":
                     break
