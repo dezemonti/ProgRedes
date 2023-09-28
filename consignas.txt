@@ -1,5 +1,0 @@
-1. Realizar un programa cliente-servidor que envie y reciba strings(texto) desde el cliente al servidor y viceversa. Ambos deberan reconocer si el string comienza con una barra(/) y si es asi llamar a una funcion que imprima la palabra "comando recibido".
-
-2. Realizar un menú con opciones desde el Servidor, al que se pueda acceder mediante mensajes desde el Cliente.
-
-3. Crear un Servidor que escuche varios clientes y muestre los mensajes de y a todos los clientes.
